@@ -1,19 +1,29 @@
- runs-on: ubuntu-latest
+
+name: Crea APK Android
+
+"on":
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compila Quaderno
+    runs-on: ubuntu-latest
 
     steps:
       - name: Scarica il progetto
         uses: actions/checkout@v4
 
-      - name: Compila APK
+      - name: Compila APK Android
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
-          command: buildozer android debug
-          repository_root: .
           workdir: .
           buildozer_version: stable
 
-      - name: Carica APK
+      - name: Salva APK
         uses: actions/upload-artifact@v4
         with:
           name: Quaderno-APK
