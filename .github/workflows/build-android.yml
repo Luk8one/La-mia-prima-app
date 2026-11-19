@@ -47,7 +47,12 @@ jobs:
 
 
       - name: Configura Android SDK
-        uses: android-actions/setup-android@v3
+
+        uses: android-actions/setup-android@v4
+        with:
+          packages: ''
+
+        
 
       - name: Accetta licenze e installa Build-Tools
         run: |
