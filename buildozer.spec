@@ -5,6 +5,8 @@ title = Quaderno
 package.name = quaderno
 package.domain = it.luca
 
+android.sdk_path = /usr/local/lib/android/sdk
+
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json,txt
 
