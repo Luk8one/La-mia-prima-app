@@ -45,6 +45,17 @@ jobs:
           python -m pip install --upgrade pip setuptools
           python -m pip install buildozer cython==0.29.34
 
+
+      - name: Configura Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Accetta licenze e installa Build-Tools
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          echo "ANDROIDSDK=$ANDROID_HOME" >> $GITHUB_ENV
+
+
       - name: Compila APK
         run: buildozer -v android debug
 
